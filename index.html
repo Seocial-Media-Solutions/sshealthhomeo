@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SS Health Homeo — Pure Nature. Real Healing.</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --navy:#1a2744;
+  --navy2:#243256;
+  --navy3:#2d3f6b;
+  --green:#3a7d44;
+  --greenlight:#4da85a;
+  --greenpale:#e8f5eb;
+  --blue:#4a90d9;
+  --bluepale:#e8f2fc;
+  --cream:#f9f5ee;
+  --cream2:#f2ede2;
+  --red:#c0392b;
+  --redpale:#fceeed;
+  --gold:#b5883a;
+  --goldpale:#fdf6e3;
+  --white:#ffffff;
+  --text:#1a2744;
+  --textmid:#3a4a6b;
+  --textmute:#6b7a9a;
+  --border:rgba(26,39,68,0.1);
+  --shadow:rgba(26,39,68,0.1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-snap-type:y mandatory;overflow-y:scroll;scroll-behavior:smooth;}
+body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;font-size:16px;}
+
+/* ═══ NAVBAR ═══ */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  height:82px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 52px;
+  background:rgba(255,255,255,0.94);
+  backdrop-filter:blur(24px) saturate(180%);
+  border-bottom:1.5px solid rgba(58,125,68,0.13);
+  box-shadow:0 2px 28px rgba(26,39,68,0.07);
+}
+.nav-logo{display:flex;align-items:center;gap:16px;text-decoration:none;}
+.nav-logo-img{height:66px;width:auto;object-fit:contain;display:block;}
+.nav-logo-text{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:800;letter-spacing:.4px;color:var(--navy);}
+.nav-logo-text em{font-style:normal;color:var(--green);}
+.nav-links{display:flex;align-items:center;gap:4px;}
+.nav-links a{
+  padding:8px 17px;border-radius:50px;
+  color:var(--textmid);text-decoration:none;
+  font-size:.88rem;font-weight:600;letter-spacing:.3px;transition:all .25s;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--green);background:var(--greenpale);}
+.nav-links .cta{
+  background:linear-gradient(135deg,var(--navy),var(--navy2));
+  color:#fff!important;padding:10px 24px;border-radius:50px;
+  box-shadow:0 4px 16px rgba(26,39,68,0.22);
+}
+.nav-links .cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,39,68,0.32)!important;}
+
+/* ═══ SNAP ═══ */
+.snap{scroll-snap-align:start;min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+
+/* ═══ HERO ═══ */
+#hero{
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 110%,rgba(58,125,68,0.14) 0%,transparent 65%),
+    radial-gradient(ellipse 40% 40% at 85% 15%,rgba(74,144,217,0.08) 0%,transparent 55%),
+    linear-gradient(160deg,#f9f5ee 0%,#f2ede2 40%,#e8f5eb 100%);
+}
+
+/* ═══ FLOATING BUBBLES ═══ */
+.bubble-field{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden;}
+.bubble{
+  position:absolute;
+  border-radius:50%;
+  opacity:0;
+  animation:bubbleRise var(--dur,10s) ease-in-out ;
+  animation-delay:var(--del,0s);
+}
+@keyframes bubbleRise{
+  0%{opacity:0;transform:translateY(0) scale(0.3);}
+  15%{opacity:var(--op,.55);}
+  85%{opacity:var(--op,.3);}
+  100%{opacity:0;transform:translateY(var(--ty,-220px)) translateX(var(--tx,0px)) scale(1.1);}
+}
+.b-green{background:radial-gradient(circle at 35% 35%,rgba(77,168,90,0.7),rgba(58,125,68,0.2));}
+.b-red{background:radial-gradient(circle at 35% 35%,rgba(192,57,43,0.65),rgba(180,40,30,0.2));}
+.b-blue{background:radial-gradient(circle at 35% 35%,rgba(74,144,217,0.65),rgba(60,120,200,0.2));}
+.b-gold{background:radial-gradient(circle at 35% 35%,rgba(181,136,58,0.6),rgba(160,120,40,0.15));}
+.b-outline-green{background:transparent;border:2px solid rgba(58,125,68,0.35);}
+.b-outline-red{background:transparent;border:2px solid rgba(192,57,43,0.32);}
+.b-outline-blue{background:transparent;border:2px solid rgba(74,144,217,0.32);}
+
+/* Hero rings */
+.hero-ring{position:absolute;border-radius:50%;border:1px solid rgba(58,125,68,0.1);animation:spinSlow var(--spd,40s) linear infinite;}
+@keyframes spinSlow{from{transform:translate(-50%,-50%) rotate(0);}to{transform:translate(-50%,-50%) rotate(360deg);}}
+.hr1{width:700px;height:700px;top:50%;left:50%;--spd:60s;}
+.hr2{width:500px;height:500px;top:50%;left:50%;--spd:40s;animation-direction:reverse;border-style:dashed;border-color:rgba(74,144,217,0.08);}
+.hr3{width:300px;height:300px;top:50%;left:50%;--spd:25s;border-color:rgba(58,125,68,0.15);}
+
+/* ═══ HERO TEXT ANIMATION ═══ */
+.hero-inner{position:relative;z-index:2;text-align:center;padding:100px 40px 40px;max-width:900px;}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:8px 26px;border-radius:50px;
+  background:rgba(58,125,68,0.09);border:1px solid rgba(58,125,68,0.22);
+  font-size:.82rem;letter-spacing:3px;text-transform:uppercase;
+  color:var(--green);font-weight:700;margin-bottom:28px;
+  opacity:0;animation:fadeUp .8s ease forwards .2s;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+
+.hero-logo-wrap{display:flex;justify-content:center;margin-bottom:20px;opacity:0;animation:fadeUp .9s ease forwards .4s;}
+.hero-logo-img{
+  height:190px;width:auto;object-fit:contain;
+  filter:drop-shadow(0 16px 48px rgba(26,39,68,0.16));
+  animation:heroPulse 4s ease-in-out infinite 1.5s;
+}
+@keyframes heroPulse{
+  0%,100%{filter:drop-shadow(0 16px 48px rgba(26,39,68,0.16));}
+  50%{filter:drop-shadow(0 24px 64px rgba(58,125,68,0.22));}
+}
+
+.hero-h1{font-family:'Playfair Display',serif;font-size:clamp(3.2rem,7vw,6.2rem);font-weight:900;line-height:.97;letter-spacing:-2px;margin-bottom:14px;}
+.hero-h1 .line1{display:block;color:var(--navy);opacity:0;animation:slideRight .8s ease forwards .6s;}
+.hero-h1 .line2{display:block;background:linear-gradient(135deg,var(--green),var(--greenlight),#5dbf6a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;opacity:0;animation:slideRight .8s ease forwards .8s;}
+.hero-h1 .line3{display:block;color:var(--gold);font-size:50%;letter-spacing:3px;font-weight:700;opacity:0;animation:slideRight .8s ease forwards 1.0s;}
+@keyframes slideRight{from{opacity:0;transform:translateX(-30px);}to{opacity:1;transform:translateX(0);}}
+
+.hero-tagline{font-size:1rem;color:var(--textmute);letter-spacing:4px;text-transform:uppercase;font-weight:500;margin-bottom:42px;opacity:0;animation:fadeUp .8s ease forwards 1.2s;}
+
+.hero-pills{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:48px;opacity:0;animation:fadeUp .8s ease forwards 1.4s;}
+.hero-pill{display:flex;align-items:center;padding:12px 30px;border-radius:50px;font-size:.88rem;font-weight:700;letter-spacing:.5px;cursor:pointer;transition:all .3s;text-decoration:none;}
+.hp-liver{background:var(--redpale);color:var(--red);border:1.5px solid rgba(192,57,43,0.18);}
+.hp-liver:hover{background:var(--red);color:#fff;transform:translateY(-4px);box-shadow:0 10px 28px rgba(192,57,43,0.3);}
+.hp-heart{background:var(--bluepale);color:var(--blue);border:1.5px solid rgba(74,144,217,0.2);}
+.hp-heart:hover{background:var(--blue);color:#fff;transform:translateY(-4px);box-shadow:0 10px 28px rgba(74,144,217,0.3);}
+.hp-stamina{background:var(--greenpale);color:var(--green);border:1.5px solid rgba(58,125,68,0.2);}
+.hp-stamina:hover{background:var(--green);color:#fff;transform:translateY(-4px);box-shadow:0 10px 28px rgba(58,125,68,0.3);}
+
+.hero-scroll-hint{display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--textmute);font-size:.75rem;letter-spacing:2px;text-transform:uppercase;opacity:0;animation:fadeIn .8s ease forwards 1.8s;}
+.scroll-line{width:1px;height:52px;background:linear-gradient(to bottom,transparent,var(--green));animation:scrollLine 2s ease-in-out infinite;}
+@keyframes scrollLine{0%,100%{opacity:.3;transform:scaleY(.7);}50%{opacity:1;transform:scaleY(1);}}
+
+/* ═══ PRODUCT SECTIONS ═══ */
+.prod-sec{padding-top:82px;}
+#sec-liver{background:radial-gradient(ellipse 55% 65% at 20% 50%,rgba(192,57,43,0.06) 0%,transparent 60%),linear-gradient(145deg,#ffffff 0%,#fdf9f9 50%,#fceeed 100%);}
+#sec-heart{background:radial-gradient(ellipse 55% 65% at 80% 50%,rgba(74,144,217,0.08) 0%,transparent 60%),linear-gradient(145deg,#f8fafe 0%,#eff5fc 50%,#e8f2fc 100%);}
+#sec-stamina{background:radial-gradient(ellipse 55% 65% at 20% 50%,rgba(58,125,68,0.08) 0%,transparent 60%),linear-gradient(145deg,#f8fdf9 0%,#eef8f0 50%,#e4f5e7 100%);}
+
+.ps-layout{width:100%;height:100%;display:grid;grid-template-columns:1fr 1fr;align-items:center;max-width:1300px;padding:0 60px;gap:0;}
+.ps-layout.flip{direction:rtl;}
+.ps-layout.flip>*{direction:ltr;}
+
+.ps-organ{display:flex;align-items:center;justify-content:center;position:relative;height:100vh;}
+.organ-stage{position:relative;width:380px;height:380px;display:flex;align-items:center;justify-content:center;}
+.sr{position:absolute;border-radius:50%;border:1px dashed;top:50%;left:50%;transform:translate(-50%,-50%);animation:spinR var(--spd,20s) linear infinite;}
+.sr:nth-child(2){animation-direction:reverse;}
+.sr1{width:380px;height:380px;}.sr2{width:290px;height:290px;}.sr3{width:210px;height:210px;}
+.liver-sr .sr{border-color:rgba(192,57,43,0.15);}
+.heart-sr .sr{border-color:rgba(74,144,217,0.17);}
+.stamina-sr .sr{border-color:rgba(58,125,68,0.17);}
+@keyframes spinR{from{transform:translate(-50%,-50%) rotate(0);}to{transform:translate(-50%,-50%) rotate(360deg);}}
+
+.organ-glow{position:absolute;width:220px;height:220px;border-radius:50%;filter:blur(60px);top:50%;left:50%;transform:translate(-50%,-50%);animation:coreGlow 3s ease-in-out infinite;z-index:0;}
+@keyframes coreGlow{0%,100%{opacity:.18;transform:translate(-50%,-50%) scale(.9);}50%{opacity:.36;transform:translate(-50%,-50%) scale(1.1);}}
+.liver-glow{background:radial-gradient(circle,rgba(192,57,43,0.5) 20%,transparent 70%);}
+.heart-glow{background:radial-gradient(circle,rgba(74,144,217,0.5) 20%,transparent 70%);}
+.stamina-glow{background:radial-gradient(circle,rgba(58,125,68,0.45) 20%,transparent 70%);}
+
+.organ-img-wrap{position:relative;z-index:2;width:250px;height:250px;display:flex;align-items:center;justify-content:center;}
+.organ-img-wrap img{max-width:100%;max-height:100%;object-fit:contain;animation:organPulse 4s ease-in-out infinite;}
+@keyframes organPulse{0%,100%{transform:scale(1) rotate(-1deg);}50%{transform:scale(1.06) rotate(1deg);}}
+
+.prob-chips{position:absolute;inset:0;z-index:3;pointer-events:none;}
+.chip{position:absolute;display:flex;align-items:center;gap:8px;padding:8px 15px;border-radius:30px;font-size:.78rem;font-weight:700;letter-spacing:.2px;backdrop-filter:blur(12px);animation:chipFloat var(--cd,3s) ease-in-out infinite;animation-delay:var(--cdl,0s);white-space:nowrap;box-shadow:0 4px 16px var(--shadow);}
+@keyframes chipFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-9px);}}
+.chip-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.liver-chip{background:rgba(255,255,255,0.94);border:1.5px solid rgba(192,57,43,0.22);color:var(--red);}
+.liver-chip .chip-dot{background:var(--red);}
+.heart-chip{background:rgba(255,255,255,0.94);border:1.5px solid rgba(74,144,217,0.26);color:var(--blue);}
+.heart-chip .chip-dot{background:var(--blue);}
+.stamina-chip{background:rgba(255,255,255,0.94);border:1.5px solid rgba(58,125,68,0.26);color:var(--green);}
+.stamina-chip .chip-dot{background:var(--green);}
+.chip-text strong{display:block;font-size:.76rem;}
+.chip-text span{font-size:.68rem;opacity:.6;font-weight:500;}
+
+.ps-info{padding:0 0 0 60px;opacity:0;transform:translateX(40px);transition:opacity .9s ease,transform .9s ease;}
+.ps-info.flip-pad{padding:0 60px 0 0;}
+.ps-info.visible{opacity:1;transform:translateX(0)!important;}
+.ps-tag{display:inline-flex;align-items:center;gap:8px;padding:7px 20px;border-radius:50px;font-size:.74rem;letter-spacing:2.5px;text-transform:uppercase;font-weight:700;margin-bottom:22px;}
+.liver-tag{background:var(--redpale);border:1.5px solid rgba(192,57,43,0.18);color:var(--red);}
+.heart-tag{background:var(--bluepale);border:1.5px solid rgba(74,144,217,0.22);color:var(--blue);}
+.stamina-tag{background:var(--greenpale);border:1.5px solid rgba(58,125,68,0.22);color:var(--green);}
+.ps-name{font-family:'Playfair Display',serif;font-size:clamp(3rem,5vw,4.4rem);font-weight:900;line-height:1;margin-bottom:8px;color:var(--navy);}
+.ps-name .accent-liver{color:var(--red);}
+.ps-name .accent-heart{color:var(--blue);}
+.ps-name .accent-stamina{color:var(--green);}
+.ps-sub{font-size:.8rem;letter-spacing:3px;text-transform:uppercase;color:var(--textmute);font-weight:500;margin-bottom:32px;}
+
+.probs-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:30px;}
+.prob-item{display:flex;align-items:center;gap:11px;padding:11px 16px;border-radius:12px;background:rgba(255,255,255,0.88);border:1.5px solid var(--border);font-size:.86rem;color:var(--textmid);font-weight:600;box-shadow:0 2px 8px var(--shadow);}
+.pi-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.pi-liver{background:var(--red);}
+.pi-heart{background:var(--blue);}
+.pi-stamina{background:var(--green);}
+
+.bottle-showcase{display:flex;align-items:center;gap:24px;padding:26px;border-radius:20px;position:relative;overflow:hidden;margin-bottom:30px;box-shadow:0 8px 32px var(--shadow);}
+.bs-liver{background:linear-gradient(135deg,rgba(192,57,43,0.06),rgba(192,57,43,0.01));border:1.5px solid rgba(192,57,43,0.15);}
+.bs-heart{background:linear-gradient(135deg,rgba(74,144,217,0.08),rgba(74,144,217,0.01));border:1.5px solid rgba(74,144,217,0.17);}
+.bs-stamina{background:linear-gradient(135deg,rgba(58,125,68,0.07),rgba(58,125,68,0.01));border:1.5px solid rgba(58,125,68,0.17);}
+.showcase-info h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:800;margin-bottom:7px;color:var(--navy);}
+.showcase-info p{font-size:.88rem;color:var(--textmid);line-height:1.7;margin-bottom:14px;}
+.showcase-pills{display:flex;flex-wrap:wrap;gap:7px;}
+.spill{padding:5px 14px;border-radius:50px;font-size:.68rem;letter-spacing:.8px;text-transform:uppercase;font-weight:700;}
+.sp-liver{background:var(--redpale);color:var(--red);border:1px solid rgba(192,57,43,0.18);}
+.sp-heart{background:var(--bluepale);color:var(--blue);border:1px solid rgba(74,144,217,0.22);}
+.sp-stamina{background:var(--greenpale);color:var(--green);border:1px solid rgba(58,125,68,0.22);}
+.sp-gold{background:var(--goldpale);color:var(--gold);border:1px solid rgba(181,136,58,0.22);}
+.sp-navy{background:rgba(26,39,68,0.06);color:var(--navy);border:1px solid rgba(26,39,68,0.12);}
+
+.next-prod-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 30px;border-radius:50px;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;text-decoration:none;transition:all .3s;background:var(--white);box-shadow:0 4px 16px var(--shadow);}
+.npb-liver{border:1.5px solid rgba(192,57,43,0.28);color:var(--red);}
+.npb-liver:hover{background:var(--red);color:#fff;transform:translateX(4px);box-shadow:0 8px 24px rgba(192,57,43,0.28);}
+.npb-heart{border:1.5px solid rgba(74,144,217,0.3);color:var(--blue);}
+.npb-heart:hover{background:var(--blue);color:#fff;transform:translateX(4px);box-shadow:0 8px 24px rgba(74,144,217,0.28);}
+.npb-stamina{border:1.5px solid rgba(58,125,68,0.28);color:var(--green);}
+.npb-stamina:hover{background:var(--green);color:#fff;transform:translateX(4px);box-shadow:0 8px 24px rgba(58,125,68,0.28);}
+.sec-edge{position:absolute;left:0;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;font-size:.65rem;letter-spacing:4px;text-transform:uppercase;color:rgba(26,39,68,0.14);padding:0 14px;font-weight:600;}
+
+/* ═══ OVERVIEW ═══ */
+#sec-overview{
+  background:linear-gradient(160deg,var(--navy) 0%,var(--navy2) 50%,var(--navy3) 100%);
+  flex-direction:column;padding:82px 60px 60px;
+  align-items:center;justify-content:center;scroll-snap-align:start;
+}
+.ov-header{width:100%;max-width:1200px;margin-bottom:52px;}
+.ov-eyebrow{font-size:.8rem;letter-spacing:4px;text-transform:uppercase;color:var(--greenlight);font-weight:700;margin-bottom:12px;}
+.ov-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:900;line-height:1.1;color:#fff;}
+.ov-title span{color:var(--greenlight);}
+.ov-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;width:100%;max-width:1200px;}
+.ov-card{border-radius:24px;padding:38px 28px 34px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);position:relative;overflow:hidden;transition:transform .4s,box-shadow .4s,background .4s;cursor:pointer;opacity:0;transform:translateY(30px);}
+.ov-card.vis{opacity:1;transform:translateY(0);}
+.ov-card:hover{transform:translateY(-10px)!important;background:rgba(255,255,255,0.1);box-shadow:0 32px 80px rgba(0,0,0,0.26);}
+.ov-card-glow{position:absolute;top:-60px;right:-60px;width:180px;height:180px;border-radius:50%;filter:blur(60px);opacity:.2;}
+.gcl-liver{background:#e74c3c;}.gcl-heart{background:#4a90d9;}.gcl-stamina{background:#3a7d44;}
+
+.ov-drop-img{
+  width:auto;height:140px;display:block;margin:0 auto 24px;
+  object-fit:contain;
+  filter:drop-shadow(0 14px 30px rgba(0,0,0,0.35));
+  animation:dropFloat 4s ease-in-out infinite;
+}
+.ov-card:nth-child(2) .ov-drop-img{animation-delay:-1.5s;}
+.ov-card:nth-child(3) .ov-drop-img{animation-delay:-3s;}
+@keyframes dropFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+
+.ov-card-name{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:800;text-align:center;margin-bottom:5px;color:#fff;}
+.ov-card-sub{text-align:center;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.38);margin-bottom:22px;}
+.ov-divider{width:40px;height:2px;border-radius:2px;margin:0 auto 22px;}
+.div-liver{background:rgba(231,76,60,0.65);}.div-heart{background:rgba(74,144,217,0.65);}.div-stamina{background:rgba(58,125,68,0.65);}
+.ov-card-feats{list-style:none;}
+.ov-card-feats li{font-size:.88rem;color:rgba(255,255,255,0.55);padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;gap:11px;font-weight:500;}
+.ov-card-feats li::before{content:'';width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+.c-liver .ov-card-feats li::before{background:#e74c3c;}
+.c-heart .ov-card-feats li::before{background:#4a90d9;}
+.c-stamina .ov-card-feats li::before{background:#3a7d44;}
+
+/* ═══ CONTACT MODAL ═══ */
+.contact-modal-overlay{
+  display:none;position:fixed;inset:0;z-index:9000;
+  background:rgba(10,18,40,0.72);backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;
+}
+.contact-modal-overlay.active{display:flex;}
+.contact-modal{
+  background:#fff;border-radius:28px;padding:40px 36px;max-width:420px;width:90%;
+  box-shadow:0 32px 80px rgba(0,0,0,0.28);
+  animation:modalPop .35s cubic-bezier(.34,1.56,.64,1);
+  position:relative;
+}
+@keyframes modalPop{from{opacity:0;transform:scale(.88);}to{opacity:1;transform:scale(1);}}
+.modal-close{
+  position:absolute;top:16px;right:18px;background:none;border:none;
+  font-size:1.5rem;cursor:pointer;color:var(--textmute);line-height:1;
+  width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  transition:background .2s;
+}
+.modal-close:hover{background:var(--cream2);}
+.modal-icon{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:1.8rem;}
+.modal-title{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:800;color:var(--navy);text-align:center;margin-bottom:6px;}
+.modal-sub{font-size:.92rem;color:var(--textmute);text-align:center;margin-bottom:28px;line-height:1.6;}
+.modal-actions{display:flex;flex-direction:column;gap:13px;}
+.modal-btn{
+  display:flex;align-items:center;gap:16px;padding:16px 22px;border-radius:16px;
+  text-decoration:none;border:2px solid;transition:all .28s;
+  font-weight:700;font-size:.95rem;
+}
+.modal-btn-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+.modal-btn-text strong{display:block;font-size:.98rem;}
+.modal-btn-text span{font-size:.8rem;font-weight:500;opacity:.65;}
+.modal-call{border-color:rgba(26,39,68,0.18);color:var(--navy);}
+.modal-call:hover{background:var(--navy);color:#fff;border-color:var(--navy);}
+.modal-call .modal-btn-icon{background:rgba(26,39,68,0.08);}
+.modal-call:hover .modal-btn-icon{background:rgba(255,255,255,0.14);}
+.modal-wa{border-color:rgba(37,211,102,0.3);color:#128c5e;}
+.modal-wa:hover{background:#25d366;color:#fff;border-color:#25d366;}
+.modal-wa .modal-btn-icon{background:rgba(37,211,102,0.1);}
+.modal-wa:hover .modal-btn-icon{background:rgba(255,255,255,0.15);}
+.modal-divider{display:flex;align-items:center;gap:12px;color:var(--textmute);font-size:.78rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;}
+.modal-divider::before,.modal-divider::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ═══ FOOTER ═══ */
+footer{
+  background:rgba(255,255,255,0.97);
+  backdrop-filter:blur(24px) saturate(180%);
+  border-top:1.5px solid rgba(58,125,68,0.13);
+  box-shadow:0 -2px 28px rgba(26,39,68,0.07);
+  color:var(--textmid);
+  scroll-snap-align:start;position:relative;overflow:hidden;
+}
+footer::before{content:'';position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(58,125,68,0.05),transparent 70%);bottom:-150px;right:-80px;pointer-events:none;}
+
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding:64px 60px 48px;max-width:1300px;margin:0 auto;position:relative;z-index:1;}
+.ft-brand-logo-wrap{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+.ft-brand-logo{height:52px;width:auto;object-fit:contain;}
+.ft-brand-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:800;color:var(--navy);}
+.ft-brand-name em{font-style:normal;color:var(--green);}
+.ft-brand-desc{font-size:.88rem;line-height:1.8;color:var(--textmute);margin-bottom:24px;max-width:280px;}
+.ft-social{display:flex;gap:10px;}
+.ft-social-btn{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--greenpale);border:1.5px solid rgba(58,125,68,0.2);font-size:.78rem;cursor:pointer;transition:all .25s;color:var(--green);text-decoration:none;font-weight:700;}
+.ft-social-btn:hover{background:var(--green);border-color:var(--green);color:#fff;transform:translateY(-2px);box-shadow:0 4px 14px rgba(58,125,68,0.22);}
+
+.ft-col-title{font-size:.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--textmute);font-weight:700;margin-bottom:20px;}
+.ft-links{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.ft-links li a,.ft-links a{font-size:.88rem;color:var(--textmid);text-decoration:none;transition:color .2s;font-weight:500;}
+.ft-links li a:hover,.ft-links a:hover{color:var(--green);}
+/* clickable contact links */
+.ft-contact-btn{
+  display:flex;align-items:center;gap:10px;
+  background:none;border:none;cursor:pointer;
+  font-family:'Nunito',sans-serif;font-size:.88rem;
+  color:var(--textmid);font-weight:500;
+  padding:0;transition:color .2s;text-align:left;
+}
+.ft-contact-btn:hover{color:var(--green);}
+.ft-contact-badge{font-size:.62rem;padding:2px 8px;border-radius:50px;font-weight:700;letter-spacing:.5px;}
+.badge-call{background:var(--bluepale);color:var(--blue);border:1px solid rgba(74,144,217,0.22);}
+.badge-wa{background:var(--greenpale);color:var(--green);border:1px solid rgba(58,125,68,0.22);}
+
+.ft-product-item{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.ft-prod-drop{height:46px;width:auto;object-fit:contain;filter:drop-shadow(0 4px 10px rgba(26,39,68,0.14));flex-shrink:0;}
+.ft-prod-name{font-size:.86rem;color:var(--textmid);font-weight:600;}
+.ft-prod-tag{font-size:.66rem;color:var(--textmute);margin-top:1px;}
+
+.footer-mid{border-top:1.5px solid rgba(58,125,68,0.1);padding:32px 60px;max-width:1300px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative;z-index:1;background:var(--greenpale);}
+.fm-stat{text-align:center;}
+.fm-stat-n{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;color:var(--green);}
+.fm-stat-l{font-size:.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--textmute);margin-top:3px;}
+
+.footer-bottom{border-top:1.5px solid rgba(58,125,68,0.1);padding:22px 60px;display:flex;align-items:center;justify-content:space-between;max-width:1300px;margin:0 auto;position:relative;z-index:1;}
+.fb-copy{font-size:.78rem;color:var(--textmute);}
+.fb-disclaimer{font-size:.7rem;color:var(--textmute);max-width:500px;text-align:center;line-height:1.6;opacity:.7;}
+.fb-right{font-size:.78rem;color:var(--textmute);}
+
+/* ═══ REVEAL ═══ */
+.rev{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease;}
+.rev.vis{opacity:1;transform:translateY(0);}
+
+/* ═══ HAMBURGER ═══ */
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px;z-index:1100;}
+.nav-hamburger span{display:block;width:24px;height:2px;background:var(--navy);border-radius:2px;transition:all .3s ease;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:1100px){.footer-top{grid-template-columns:1fr 1fr;gap:36px;}}
+@media(max-width:900px){
+  #nav{padding:0 20px;height:72px;}
+  .nav-hamburger{display:flex;}
+  .nav-links{display:none;flex-direction:column;align-items:stretch;position:fixed;top:72px;left:0;right:0;background:rgba(255,255,255,0.97);backdrop-filter:blur(24px);border-bottom:1px solid rgba(58,125,68,0.12);padding:20px 24px 28px;gap:6px;z-index:1050;}
+  .nav-links.open{display:flex;}
+  .nav-links a{padding:13px 16px;border-radius:12px;font-size:.95rem;}
+  .nav-logo-img{height:50px;}
+  .hero-logo-img{height:130px;}
+  .hr1{width:450px;height:450px;}.hr2{width:320px;height:320px;}.hr3{width:200px;height:200px;}
+  .hero-inner{padding:90px 24px 36px;}
+  .ps-layout{grid-template-columns:1fr;padding:20px;}
+  .ps-organ{height:300px;}
+  .ps-info{padding:0 20px!important;}
+  .ov-cards{grid-template-columns:1fr;}
+  #sec-overview{padding:72px 24px 48px;}
+  .footer-top{grid-template-columns:1fr;gap:28px;padding:48px 24px 32px;}
+  .footer-mid{padding:24px;gap:14px;}
+  .footer-bottom{flex-direction:column;gap:12px;padding:20px 24px;text-align:center;}
+}
+@media(max-width:480px){
+  #nav{height:64px;padding:0 14px;}
+  .nav-logo-img{height:42px;}
+  .nav-links{top:64px;}
+  .hero-logo-img{height:100px;}
+  .hero-h1{font-size:clamp(2.4rem,9vw,3.4rem);}
+  .footer-mid{grid-template-columns:1fr;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ CONTACT MODAL ═══ -->
+<div class="contact-modal-overlay" id="contactModal">
+  <div class="contact-modal">
+    <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+    <div class="modal-icon" style="background:linear-gradient(135deg,var(--greenpale),var(--bluepale));"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green)"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.17 3.4 2 2 0 0 1 3.15 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16h1z"/></svg></div>
+    <h2 class="modal-title">Get in Touch</h2>
+    <p class="modal-sub">Choose how you'd like to connect with us. We're available Mon–Sat, 9AM–7PM.</p>
+    <div class="modal-actions">
+      <a href="tel:+91XXXXXXXXXX" class="modal-btn modal-call" id="modalCallBtn">
+        <div class="modal-btn-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.17 3.4 2 2 0 0 1 3.15 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16h1z"/></svg></div>
+        <div class="modal-btn-text">
+          <strong>Call Us Directly</strong>
+          <span>+91 XXXX XXX XXX — Tap to call</span>
+        </div>
+      </a>
+      <div class="modal-divider">or</div>
+      <a href="https://wa.me/91XXXXXXXXXX?text=Hello%2C%20I%20am%20interested%20in%20SS%20Health%20Homeo%20products." class="modal-btn modal-wa" id="modalWaBtn" target="_blank" rel="noopener">
+        <div class="modal-btn-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
+        <div class="modal-btn-text">
+          <strong>WhatsApp Us</strong>
+          <span>Chat with us on WhatsApp</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ NAV ═══ -->
+<nav id="nav">
+  <a class="nav-logo" href="#hero">
+    <img src="logo.png" alt="SS Health Homeo" class="nav-logo-img" onerror="this.style.display='none'">
+    <span class="nav-logo-text">SS Health <em>Homeo</em></span>
+  </a>
+  <button class="nav-hamburger" id="navHamburger">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navLinks">
+    <a href="#hero">Home</a>
+    <a href="#sec-liver">Liver Drops</a>
+    <a href="#sec-heart">Heart Drops</a>
+    <a href="#sec-stamina">Stamina Boost</a>
+    <a href="#sec-overview">Products</a>
+    <a href="#footer" class="cta" onclick="openContactModal('wa')">Contact Us</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="snap" id="hero">
+  <div class="hero-ring hr1"></div>
+  <div class="hero-ring hr2"></div>
+  <div class="hero-ring hr3"></div>
+  <div class="bubble-field" id="bubbleField"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Ayurvedic Homeopathy</div>
+    <div class="hero-logo-wrap">
+      <img src="logo.png" alt="SS Health Homeo" class="hero-logo-img" onerror="this.style.display='none'">
+    </div>
+    <h1 class="hero-h1">
+      <span class="line1">SS Health</span>
+      <span class="line2">Homeo</span>
+      <span class="line3">Pure Nature. Real Healing.</span>
+    </h1>
+    <p class="hero-tagline">Three Drops. Three Miracles.</p>
+    <div class="hero-pills">
+      <a href="#sec-liver" class="hero-pill hp-liver">Liver Drops</a>
+      <a href="#sec-heart" class="hero-pill hp-heart">Heart Drops</a>
+      <a href="#sec-stamina" class="hero-pill hp-stamina">Stamina Boost</a>
+    </div>
+    <div class="hero-scroll-hint">
+      <div class="scroll-line"></div>
+      <span>Scroll to explore</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LIVER ═══ -->
+<section class="snap prod-sec" id="sec-liver">
+  <span class="sec-edge">SS Liver Drops — 01</span>
+  <div class="ps-layout">
+    <div class="ps-organ">
+      <div class="organ-stage liver-sr">
+        <div class="sr sr1" style="--spd:25s"></div>
+        <div class="sr sr2" style="--spd:18s"></div>
+        <div class="sr sr3" style="--spd:12s"></div>
+        <div class="organ-glow liver-glow"></div>
+        <div class="organ-img-wrap">
+          <img src="Liver.png" alt="Human Liver" style="filter:drop-shadow(0 12px 32px rgba(192,57,43,0.3))" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2491/2491651.png'"/>
+        </div>
+        <div class="prob-chips">
+          <div class="chip liver-chip" style="top:4%;left:0%;--cd:3s;--cdl:0s;"><span class="chip-dot"></span><div class="chip-text"><strong>Fatty Liver</strong><span>Fat accumulation</span></div></div>
+          <div class="chip liver-chip" style="top:18%;right:-5%;--cd:4s;--cdl:.5s;"><span class="chip-dot"></span><div class="chip-text"><strong>Jaundice</strong><span>Bile imbalance</span></div></div>
+          <div class="chip liver-chip" style="bottom:26%;left:-5%;--cd:3.5s;--cdl:1s;"><span class="chip-dot"></span><div class="chip-text"><strong>Inflammation</strong><span>Liver swelling</span></div></div>
+          <div class="chip liver-chip" style="bottom:7%;right:0%;--cd:4.5s;--cdl:1.5s;"><span class="chip-dot"></span><div class="chip-text"><strong>Toxin Buildup</strong><span>Sluggish detox</span></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="ps-info" id="li-info">
+      <div class="ps-tag liver-tag">Liver Care Formula</div>
+      <h2 class="ps-name">SS <span class="accent-liver">Liver</span><br>Drops</h2>
+      <p class="ps-sub">Detox · Restore · Protect</p>
+      <div class="probs-grid">
+        <div class="prob-item"><span class="pi-dot pi-liver"></span>Fatty Liver Disease</div>
+        <div class="prob-item"><span class="pi-dot pi-liver"></span>Jaundice</div>
+        <div class="prob-item"><span class="pi-dot pi-liver"></span>Liver Inflammation</div>
+        <div class="prob-item"><span class="pi-dot pi-liver"></span>Toxin Accumulation</div>
+        <div class="prob-item"><span class="pi-dot pi-liver"></span>Digestive Issues</div>
+        <div class="prob-item"><span class="pi-dot pi-liver"></span>Chronic Fatigue</div>
+      </div>
+      <div class="bottle-showcase bs-liver">
+        <div class="showcase-info">
+          <h3>SS Liver Drops</h3>
+          <p>Advanced homeopathic formula with natural herbs for complete liver detox, bile regulation and hepatic wellness.</p>
+          <div class="showcase-pills">
+            <span class="spill sp-liver">Herbal</span>
+            <span class="spill sp-gold">Homeopathic</span>
+            <span class="spill sp-navy">Zero Side Effects</span>
+          </div>
+        </div>
+      </div>
+      <a href="#sec-heart" class="next-prod-btn npb-liver">Next: Heart Drops &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HEART ═══ -->
+<section class="snap prod-sec" id="sec-heart">
+  <span class="sec-edge">SS Heart Drops — 02</span>
+  <div class="ps-layout flip">
+    <div class="ps-info flip-pad" id="he-info">
+      <div class="ps-tag heart-tag">Cardiac Support Formula</div>
+      <h2 class="ps-name">SS <span class="accent-heart">Heart</span><br>Drops</h2>
+      <p class="ps-sub">Strengthen · Balance · Protect</p>
+      <div class="probs-grid">
+        <div class="prob-item"><span class="pi-dot pi-heart"></span>High Blood Pressure</div>
+        <div class="prob-item"><span class="pi-dot pi-heart"></span>Palpitations</div>
+        <div class="prob-item"><span class="pi-dot pi-heart"></span>Poor Circulation</div>
+        <div class="prob-item"><span class="pi-dot pi-heart"></span>Artery Blockage</div>
+        <div class="prob-item"><span class="pi-dot pi-heart"></span>High Cholesterol</div>
+        <div class="prob-item"><span class="pi-dot pi-heart"></span>Cardiac Stress</div>
+      </div>
+      <div class="bottle-showcase bs-heart">
+        <div class="showcase-info">
+          <h3>SS Heart Drops</h3>
+          <p>Pure homeopathic cardiac formula to regulate heart rhythm, lower blood pressure and strengthen your heart naturally.</p>
+          <div class="showcase-pills">
+            <span class="spill sp-heart">Cardiac Care</span>
+            <span class="spill sp-gold">Homeopathic</span>
+            <span class="spill sp-navy">BP Support</span>
+          </div>
+        </div>
+      </div>
+      <a href="#sec-stamina" class="next-prod-btn npb-heart">Next: Stamina Drops &rarr;</a>
+    </div>
+    <div class="ps-organ">
+      <div class="organ-stage heart-sr">
+        <div class="sr sr1" style="--spd:22s"></div>
+        <div class="sr sr2" style="--spd:16s"></div>
+        <div class="sr sr3" style="--spd:11s"></div>
+        <div class="organ-glow heart-glow"></div>
+        <div class="organ-img-wrap">
+          <img src="Heart.png" alt="Human Heart" style="filter:drop-shadow(0 12px 32px rgba(74,144,217,0.36))" onerror="this.src='https://cdn-icons-png.flaticon.com/512/833/833472.png'"/>
+        </div>
+        <div class="prob-chips">
+          <div class="chip heart-chip" style="top:4%;left:0%;--cd:3.2s;--cdl:0s;"><span class="chip-dot"></span><div class="chip-text"><strong>Hypertension</strong><span>High BP</span></div></div>
+          <div class="chip heart-chip" style="top:20%;right:-5%;--cd:4.1s;--cdl:.6s;"><span class="chip-dot"></span><div class="chip-text"><strong>Palpitations</strong><span>Irregular beat</span></div></div>
+          <div class="chip heart-chip" style="bottom:25%;left:-5%;--cd:3.6s;--cdl:1.1s;"><span class="chip-dot"></span><div class="chip-text"><strong>Blockage</strong><span>Artery clog</span></div></div>
+          <div class="chip heart-chip" style="bottom:7%;right:0%;--cd:4.8s;--cdl:1.7s;"><span class="chip-dot"></span><div class="chip-text"><strong>Cholesterol</strong><span>Lipid imbalance</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STAMINA ═══ -->
+<section class="snap prod-sec" id="sec-stamina">
+  <span class="sec-edge">SS Stamina Boost — 03</span>
+  <div class="ps-layout">
+    <div class="ps-organ">
+      <div class="organ-stage stamina-sr">
+        <div class="sr sr1" style="--spd:28s"></div>
+        <div class="sr sr2" style="--spd:19s"></div>
+        <div class="sr sr3" style="--spd:13s"></div>
+        <div class="organ-glow stamina-glow"></div>
+        <div class="organ-img-wrap">
+          <img src="Stamina.png" alt="Stamina and Vitality" style="width:200px;height:230px;filter:drop-shadow(0 12px 32px rgba(58,125,68,0.36));" onerror="this.style.display='none'"/>
+        </div>
+        <div class="prob-chips">
+          <div class="chip stamina-chip" style="top:4%;left:0%;--cd:3s;--cdl:0s;"><span class="chip-dot"></span><div class="chip-text"><strong>Chronic Fatigue</strong><span>No energy</span></div></div>
+          <div class="chip stamina-chip" style="top:20%;right:-5%;--cd:4s;--cdl:.5s;"><span class="chip-dot"></span><div class="chip-text"><strong>Brain Fog</strong><span>Mental fatigue</span></div></div>
+          <div class="chip stamina-chip" style="bottom:26%;left:-5%;--cd:3.5s;--cdl:1s;"><span class="chip-dot"></span><div class="chip-text"><strong>Weak Muscles</strong><span>Low strength</span></div></div>
+          <div class="chip stamina-chip" style="bottom:8%;right:0%;--cd:4.5s;--cdl:1.5s;"><span class="chip-dot"></span><div class="chip-text"><strong>Slow Recovery</strong><span>Post-workout</span></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="ps-info" id="st-info">
+      <div class="ps-tag stamina-tag">Vitality and Stamina Formula</div>
+      <h2 class="ps-name">SS <span class="accent-stamina">Stamina</span><br>Boost Drops</h2>
+      <p class="ps-sub">Energize · Endure · Excel</p>
+      <div class="probs-grid">
+        <div class="prob-item"><span class="pi-dot pi-stamina"></span>Chronic Fatigue</div>
+        <div class="prob-item"><span class="pi-dot pi-stamina"></span>Low Endurance</div>
+        <div class="prob-item"><span class="pi-dot pi-stamina"></span>Mental Brain Fog</div>
+        <div class="prob-item"><span class="pi-dot pi-stamina"></span>Weak Muscles</div>
+        <div class="prob-item"><span class="pi-dot pi-stamina"></span>Poor Sleep Quality</div>
+        <div class="prob-item"><span class="pi-dot pi-stamina"></span>Slow Recovery</div>
+      </div>
+      <div class="bottle-showcase bs-stamina">
+        <div class="showcase-info">
+          <h3>SS Stamina Boost Drops</h3>
+          <p>Ginseng-powered homeopathic drops for unstoppable energy, sharp mental focus and peak physical performance.</p>
+          <div class="showcase-pills">
+            <span class="spill sp-stamina">Ginseng Based</span>
+            <span class="spill sp-gold">Homeopathic</span>
+            <span class="spill sp-navy">Energy Plus</span>
+          </div>
+        </div>
+      </div>
+      <a href="#sec-overview" class="next-prod-btn npb-stamina">See All Products &darr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ OVERVIEW ═══ -->
+<section class="snap" id="sec-overview">
+  <div style="width:100%;max-width:1200px;padding:0 60px;">
+    <div class="ov-header rev">
+      <p class="ov-eyebrow">Complete Wellness Range</p>
+      <h2 class="ov-title">Our <span>Homeopathic</span> Drops</h2>
+    </div>
+    <div class="ov-cards">
+      <div class="ov-card c-liver" id="ovc1">
+        <div class="ov-card-glow gcl-liver"></div>
+        <img src="Liver.png" alt="SS Liver Drops" class="ov-drop-img" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2491/2491651.png'">
+        <div class="ov-card-name">SS Liver Drops</div>
+        <div class="ov-card-sub">Hepatic Wellness</div>
+        <div class="ov-divider div-liver"></div>
+        <ul class="ov-card-feats">
+          <li>Deep liver detoxification</li>
+          <li>Reduces fatty liver</li>
+          <li>Supports bile production</li>
+          <li>Boosts digestive health</li>
+        </ul>
+      </div>
+      <div class="ov-card c-heart" id="ovc2">
+        <div class="ov-card-glow gcl-heart"></div>
+        <img src="Heart.png" alt="SS Heart Drops" class="ov-drop-img" onerror="this.src='https://cdn-icons-png.flaticon.com/512/833/833472.png'">
+        <div class="ov-card-name">SS Heart Drops</div>
+        <div class="ov-card-sub">Cardiac Support</div>
+        <div class="ov-divider div-heart"></div>
+        <ul class="ov-card-feats">
+          <li>Regulates heart rhythm</li>
+          <li>Lowers blood pressure</li>
+          <li>Improves circulation</li>
+          <li>Reduces cardiac stress</li>
+        </ul>
+      </div>
+      <div class="ov-card c-stamina" id="ovc3">
+        <div class="ov-card-glow gcl-stamina"></div>
+        <img src="Stamina.png" alt="SS Stamina Boost" class="ov-drop-img" onerror="this.style.opacity='.3'">
+        <div class="ov-card-name">SS Stamina Boost</div>
+        <div class="ov-card-sub">Vitality Formula</div>
+        <div class="ov-divider div-stamina"></div>
+        <ul class="ov-card-feats">
+          <li>Increases endurance</li>
+          <li>Sharpens mental focus</li>
+          <li>Ginseng herbal base</li>
+          <li>Faster recovery</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer id="footer">
+  <div class="footer-top">
+    <div class="ft-brand">
+      <div class="ft-brand-logo-wrap">
+        <img src="logo.png" alt="SS Health Homeo" class="ft-brand-logo" onerror="this.style.display='none'">
+        <div class="ft-brand-name">SS Health <em>Homeo</em></div>
+      </div>
+      <p class="ft-brand-desc">Bringing the ancient wisdom of Ayurvedic homeopathy into your daily life — crafted from the purest natural ingredients with zero chemicals and zero side effects.</p>
+      <div class="ft-social">
+        <a href="#" class="ft-social-btn">fb</a>
+        <a href="#" class="ft-social-btn">ig</a>
+        <button class="ft-social-btn" onclick="openContactModal('wa')" title="WhatsApp">wa</button>
+        <a href="#" class="ft-social-btn">yt</a>
+      </div>
+    </div>
+    <div>
+      <div class="ft-col-title">Our Products</div>
+      <div class="ft-product-item">
+        <!-- <img src="Liver.png" class="ft-prod-drop" alt="Liver Drops" onerror="this.style.display='none'"> -->
+        <div><div class="ft-prod-name">SS Liver Drops</div><div class="ft-prod-tag">Hepatic Wellness</div></div>
+      </div>
+      <div class="ft-product-item">
+        <!-- <img src="Heart.png" class="ft-prod-drop" alt="Heart Drops" onerror="this.style.display='none'"> -->
+        <div><div class="ft-prod-name">SS Heart Drops</div><div class="ft-prod-tag">Cardiac Support</div></div>
+      </div>
+      <div class="ft-product-item">
+        <!-- <img src="Stamina.png" class="ft-prod-drop" alt="Stamina Boost" onerror="this.style.display='none'"> -->
+        <div><div class="ft-prod-name">SS Stamina Boost</div><div class="ft-prod-tag">Vitality Formula</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="ft-col-title">Quick Links</div>
+      <ul class="ft-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#sec-liver">Liver Drops</a></li>
+        <li><a href="#sec-heart">Heart Drops</a></li>
+        <li><a href="#sec-stamina">Stamina Boost</a></li>
+        <li><a href="#sec-overview">All Products</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="ft-col-title">Contact Us</div>
+      <ul class="ft-links">
+        <li>
+          <button class="ft-contact-btn" onclick="openContactModal('call')">
+            <span>+91 XXXX XXX XXX</span>
+            <span class="ft-contact-badge badge-call">CALL</span>
+          </button>
+        </li>
+        <li><a href="mailto:info@sshealthhomeo.com">info@sshealthhomeo.com</a></li>
+        <li><a href="#">Jaipur, Rajasthan, India</a></li>
+        <li><a href="#">Mon–Sat: 9AM – 7PM</a></li>
+        <li>
+          <button class="ft-contact-btn" >
+            <span>WhatsApp Us</span>
+            <span class="ft-contact-badge badge-wa" onclick="openContactModal('wa')">CHAT</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-mid" style="max-width:100%;padding-left:60px;padding-right:60px;">
+    <div class="fm-stat"><div class="fm-stat-n">10K+</div><div class="fm-stat-l">Happy Customers</div></div>
+    <div class="fm-stat"><div class="fm-stat-n">100%</div><div class="fm-stat-l">Natural Ingredients</div></div>
+    <div class="fm-stat"><div class="fm-stat-n">Zero</div><div class="fm-stat-l">Side Effects</div></div>
+  </div>
+  <div class="footer-bottom" style="max-width:100%;padding-left:60px;padding-right:60px;">
+    <div class="fb-copy">&copy; 2025 SS Health Homeo. All rights reserved.</div>
+    <div class="fb-disclaimer">Homeopathic products are not intended to diagnose, treat, cure or prevent any disease. Consult a qualified practitioner before use.</div>
+    <div class="fb-right">Made with care in India</div>
+  </div>
+</footer>
+
+<script>
+/* ═══ BUBBLES ═══ */
+(function(){
+  const field = document.getElementById('bubbleField');
+  const types = ['b-green','b-red','b-blue','b-gold','b-outline-green','b-outline-red','b-outline-blue'];
+  const ops = [0.55, 0.45, 0.5, 0.4, 0.6, 0.55, 0.5];
+  for(let i = 0; i < 55; i++){
+    const d = document.createElement('div');
+    const typeIdx = Math.floor(Math.random() * types.length);
+    const size = Math.random() * 28 + 8;
+    d.className = 'bubble ' + types[typeIdx];
+    d.style.cssText = [
+      'width:' + size + 'px',
+      'height:' + size + 'px',
+      'left:' + (Math.random() * 96 + 2) + '%',
+      'top:' + (Math.random() * 80 + 10) + '%',
+      '--dur:' + (Math.random() * 10 + 8) + 's',
+      '--del:-' + (Math.random() * 14) + 's',
+      '--tx:' + ((Math.random() - 0.5) * 100) + 'px',
+      '--ty:-' + (Math.random() * 200 + 100) + 'px',
+      '--op:' + ops[typeIdx]
+    ].join(';');
+    field.appendChild(d);
+  }
+})();
+
+/* ═══ CONTACT MODAL ═══ */
+function openContactModal(focus){
+  const overlay = document.getElementById('contactModal');
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  if(focus === 'wa'){
+    setTimeout(() => document.getElementById('modalWaBtn').focus(), 100);
+  } else {
+    setTimeout(() => document.getElementById('modalCallBtn').focus(), 100);
+  }
+}
+document.getElementById('modalClose').addEventListener('click', function(){
+  document.getElementById('contactModal').classList.remove('active');
+  document.body.style.overflow = '';
+});
+document.getElementById('contactModal').addEventListener('click', function(e){
+  if(e.target === this){
+    this.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+});
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape'){
+    document.getElementById('contactModal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+});
+
+/* ═══ INTERSECTION OBSERVER ═══ */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible','vis'); });
+}, {threshold: 0.12});
+document.querySelectorAll('.ps-info,.rev,.ov-card').forEach((el,i) => {
+  if(el.classList.contains('ov-card')) el.style.transitionDelay = (i % 3) * 0.18 + 's';
+  io.observe(el);
+});
+
+/* ═══ NAV ACTIVE ═══ */
+const sections = ['hero','sec-liver','sec-heart','sec-stamina','sec-overview','footer'];
+const links = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let cur = 'hero';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if(el && window.scrollY >= el.offsetTop - 100) cur = id;
+  });
+  links.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + cur); });
+}, {passive: true});
+
+/* ═══ HAMBURGER ═══ */
+const ham = document.getElementById('navHamburger'), nl = document.getElementById('navLinks');
+if(ham && nl){
+  ham.addEventListener('click', () => { ham.classList.toggle('open'); nl.classList.toggle('open'); });
+  nl.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { ham.classList.remove('open'); nl.classList.remove('open'); }));
+}
+</script>
+</body>
+</html>
