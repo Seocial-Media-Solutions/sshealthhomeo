@@ -1158,6 +1158,61 @@
       text-transform: uppercase;
     }
 
+    /* PRICE TAG */
+    .prod-price-tag {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 2px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .prod-price-tag .ppt-currency {
+      font-size: .85rem;
+      font-weight: 700;
+      opacity: .8;
+    }
+    .prod-price-tag .ppt-amount {
+      font-size: 1.7rem;
+      letter-spacing: -1px;
+    }
+    .prod-price-tag .ppt-label {
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .5px;
+      opacity: .65;
+      text-transform: uppercase;
+      margin-left: 4px;
+    }
+    .ps-price-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .ps-price-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    /* Overview card price */
+    .ov-price {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 2px;
+      margin: 14px 0 6px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      padding: 10px 0 8px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .ov-price .op-cur { font-size: 1rem; opacity: .85; color: inherit; }
+    .ov-price .op-amt { font-size: 2rem; letter-spacing: -1.5px; color: inherit; }
+    .ov-price .op-lbl { font-size: .62rem; opacity: .65; text-transform: uppercase; letter-spacing: .5px; margin-left: 4px; color: inherit; font-weight: 600; }
+
     .next-prod-btn {
       display: inline-flex;
       align-items: center;
@@ -2959,6 +3014,7 @@
             </div>
           </div>
         </div>
+
         <div class="ps-btns">
           <button class="buy-btn buy-btn-active" onclick="openPurchaseModal('SS Stamina Boost Drops')">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -3003,6 +3059,7 @@
             </div>
           </div>
         </div>
+
         <div class="ps-btns">
           <button class="buy-btn buy-btn-active" onclick="openPurchaseModal('SS Heart Drops')">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -3098,6 +3155,7 @@
             </div>
           </div>
         </div>
+
         <div class="ps-btns">
           <button class="buy-btn buy-btn-active" onclick="openPurchaseModal('SS Liver Drops')">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -3134,6 +3192,9 @@
             <li>Testosterone Support</li>
             <li>Weakness & Debility Care</li>
           </ul>
+          <div class="ov-price" style="color:#6dce7a">
+            <span class="op-cur">₹</span><span class="op-amt">899</span><span class="op-lbl">/ bottle</span>
+          </div>
           <button class="ov-cs-badge buy-btn-active" style="border:none;cursor:pointer;width:100%"
             onclick="openPurchaseModal('SS Stamina Boost')">Order Now</button>
         </div>
@@ -3150,6 +3211,9 @@
             <li>Improves circulation</li>
             <li>Reduces cardiac stress</li>
           </ul>
+          <div class="ov-price" style="color:#7ab8ef">
+            <span class="op-cur">₹</span><span class="op-amt">899</span><span class="op-lbl">/ bottle</span>
+          </div>
           <button class="ov-cs-badge buy-btn-active" style="border:none;cursor:pointer;width:100%"
             onclick="openPurchaseModal('SS Heart Drops')">Order Now</button>
         </div>
@@ -3166,6 +3230,9 @@
             <li>Supports bile production</li>
             <li>Boosts digestive health</li>
           </ul>
+          <div class="ov-price" style="color:#e87d72">
+            <span class="op-cur">₹</span><span class="op-amt">899</span><span class="op-lbl">/ bottle</span>
+          </div>
           <button class="ov-cs-badge buy-btn-active" style="border:none;cursor:pointer;width:100%"
             onclick="openPurchaseModal('SS Liver Drops')">Order Now</button>
         </div>
@@ -3311,14 +3378,14 @@
     const qrCodeContainer = document.getElementById('qrCodeContainer');
 
     const pmeta = {
-      'SS Stamina Boost Drops': { img: 'Stamina.png', sub: 'Vitality & Energy Formula', price: '499' },
-      'SS Heart Drops': { img: 'Heart.png', sub: 'Cardiac Support Formula', price: '499' },
-      'SS Liver Drops': { img: 'Liver.png', sub: 'Hepatic Wellness Formula', price: '499' },
-      'SS Stamina Boost': { img: 'Stamina.png', sub: 'Vitality & Energy Formula', price: '499' }
+      'SS Stamina Boost Drops': { img: 'Stamina.png', sub: 'Vitality & Energy Formula', price: '899' },
+      'SS Heart Drops': { img: 'Heart.png', sub: 'Cardiac Support Formula', price: '899' },
+      'SS Liver Drops': { img: 'Liver.png', sub: 'Hepatic Wellness Formula', price: '899' },
+      'SS Stamina Boost': { img: 'Stamina.png', sub: 'Vitality & Energy Formula', price: '899' }
     };
 
     function openPurchaseModal(productName) {
-      const meta = pmeta[productName] || { img: 'logo.png', sub: 'Homeopathic Wellness', price: '499' };
+      const meta = pmeta[productName] || { img: 'logo.png', sub: 'Homeopathic Wellness', price: '899' };
       document.getElementById('orderProduct').value = productName;
       document.getElementById('orderProduct').setAttribute('data-price', meta.price);
       document.getElementById('modalProductName').innerText = productName;
