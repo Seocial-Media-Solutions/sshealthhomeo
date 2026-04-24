@@ -2749,30 +2749,38 @@
         </form>
 
         <form id="paymentStep" style="display: none; width: 100%; text-align: center;">
-          <div style="display:flex; justify-content:center; margin: 15px auto; padding:15px; background:#fff; border-radius:12px; border: 1.5px solid var(--border); width: 180px; height: 180px;">
+          <div
+            style="display:flex; justify-content:center; margin: 15px auto; padding:15px; background:#fff; border-radius:12px; border: 1.5px solid var(--border); width: 180px; height: 180px;">
             <img src="qrcode.png" alt="UPI QR Code" style="width: 100%; height: 100%; object-fit: contain;">
           </div>
-          <p style="font-size: 0.85rem; margin-bottom: 20px; color: var(--textmute); font-weight: 600;">Scan with any UPI app (GPay, PhonePe, Paytm)</p>
+          <p style="font-size: 0.85rem; margin-bottom: 20px; color: var(--textmute); font-weight: 600;">Scan with any
+            UPI app (GPay, PhonePe, Paytm)</p>
           <div class="form-group" style="text-align: left;">
             <label for="utrInput">Enter 12-Digit UTR / Reference No.</label>
             <div class="form-field-wrap">
-              <input type="text" id="utrInput" class="form-input" placeholder="e.g. 312345678901" pattern="[0-9]{12}" minlength="12" maxlength="12" required
-                onkeypress="return event.charCode >= 48 && event.charCode <= 57"
-                oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 12);" title="Please enter exactly 12 digits">
+              <input type="text" id="utrInput" class="form-input" placeholder="e.g. 312345678901" pattern="[0-9]{12}"
+                minlength="12" maxlength="12" required onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 12);"
+                title="Please enter exactly 12 digits">
               <div class="form-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                 </svg>
               </div>
             </div>
           </div>
-          <div class="form-group" style="text-align: left; background: rgba(58, 125, 68, 0.05); padding: 12px; border-radius: 8px; border: 1px dashed rgba(58, 125, 68, 0.3);">
-            <label style="font-size: 0.85rem; color: var(--green); margin-bottom: 4px; display: block;">📸 Important Step</label>
-            <p style="font-size: 0.78rem; color: var(--textmid); line-height: 1.4;">After entering your UTR above, also attach your payment screenshot directly in the WhatsApp chat when it opens.</p>
+          <div class="form-group"
+            style="text-align: left; background: rgba(58, 125, 68, 0.05); padding: 12px; border-radius: 8px; border: 1px dashed rgba(58, 125, 68, 0.3);">
+            <label style="font-size: 0.85rem; color: var(--green); margin-bottom: 4px; display: block;">📸 Important
+              Step</label>
+            <p style="font-size: 0.78rem; color: var(--textmid); line-height: 1.4;">After entering your UTR above, also
+              attach your payment screenshot directly in the WhatsApp chat when it opens.</p>
           </div>
           <button type="submit" class="submit-btn" id="submitFinalOrderBtn" style="margin-top: 15px;">
             <span>Complete Order on WhatsApp</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
@@ -2911,18 +2919,18 @@
               onerror="this.style.display='none'" /></div>
           <div class="prob-chips">
             <div class="chip stamina-chip" style="top:4%;left:0%;--cd:3s;--cdl:0s;"><span class="chip-dot"></span>
-              <div class="chip-text"><strong>Chronic Fatigue</strong><span>No energy</span></div>
+              <div class="chip-text"><strong>Increase Stamina</strong><span>Peak energy</span></div>
             </div>
             <div class="chip stamina-chip" style="top:20%;right:-4%;--cd:4s;--cdl:.5s;"><span class="chip-dot"></span>
-              <div class="chip-text"><strong>Brain Fog</strong><span>Mental fatigue</span></div>
+              <div class="chip-text"><strong>Boost Performance</strong><span>Optimal results</span></div>
             </div>
             <div class="chip stamina-chip" style="bottom:26%;left:-4%;--cd:3.5s;--cdl:1s;"><span
                 class="chip-dot"></span>
-              <div class="chip-text"><strong>Weak Muscles</strong><span>Low strength</span></div>
+              <div class="chip-text"><strong>Weakness</strong><span>Energy loss</span></div>
             </div>
             <div class="chip stamina-chip" style="bottom:8%;right:0%;--cd:4.5s;--cdl:1.5s;"><span
                 class="chip-dot"></span>
-              <div class="chip-text"><strong>Slow Recovery</strong><span>Post-workout</span></div>
+              <div class="chip-text"><strong>Sexual Debility</strong><span>Restore vitality</span></div>
             </div>
           </div>
         </div>
@@ -2932,12 +2940,12 @@
         <h2 class="ps-name">SS <span class="accent-stamina">Stamina</span><br>Boost Drops</h2>
         <p class="ps-sub">Energize · Endure · Excel</p>
         <div class="probs-grid">
-          <div class="prob-item"><span class="pi-dot pi-stamina"></span>Chronic Fatigue</div>
-          <div class="prob-item"><span class="pi-dot pi-stamina"></span>Low Endurance</div>
-          <div class="prob-item"><span class="pi-dot pi-stamina"></span>Mental Brain Fog</div>
-          <div class="prob-item"><span class="pi-dot pi-stamina"></span>Weak Muscles</div>
-          <div class="prob-item"><span class="pi-dot pi-stamina"></span>Poor Sleep Quality</div>
-          <div class="prob-item"><span class="pi-dot pi-stamina"></span>Slow Recovery</div>
+          <div class="prob-item"><span class="pi-dot pi-stamina"></span>Increase Stamina</div>
+          <div class="prob-item"><span class="pi-dot pi-stamina"></span>Boost Performance</div>
+          <div class="prob-item"><span class="pi-dot pi-stamina"></span>Erectile Dysfunction</div>
+          <div class="prob-item"><span class="pi-dot pi-stamina"></span>Maintain Testosterone</div>
+          <div class="prob-item"><span class="pi-dot pi-stamina"></span>Weakness</div>
+          <div class="prob-item"><span class="pi-dot pi-stamina"></span>Sexual Debility</div>
         </div>
         <div class="bottle-showcase bs-stamina">
           <div class="showcase-info">
@@ -3121,10 +3129,10 @@
           <div class="ov-card-sub">Vitality Formula</div>
           <div class="ov-divider div-stamina"></div>
           <ul class="ov-card-feats">
-            <li>Increases endurance</li>
-            <li>Sharpens mental focus</li>
-            <li>Ginseng herbal base</li>
-            <li>Faster recovery</li>
+            <li>Increase Stamina</li>
+            <li>Boost Performance</li>
+            <li>Testosterone Support</li>
+            <li>Weakness & Debility Care</li>
           </ul>
           <button class="ov-cs-badge buy-btn-active" style="border:none;cursor:pointer;width:100%"
             onclick="openPurchaseModal('SS Stamina Boost')">Order Now</button>
@@ -3344,7 +3352,7 @@
       // Transition to Payment Step
       orderForm.style.display = 'none';
       paymentStep.style.display = 'block';
-      
+
       const price = document.getElementById('orderProduct').getAttribute('data-price');
       document.querySelector('.pm-right .modal-title').innerText = 'Secure Payment';
       document.querySelector('.pm-right .modal-sub').innerText = `Total Amount: ₹${price}. Scan using any app to pay.`;
